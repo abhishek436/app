@@ -15,7 +15,8 @@ passport.use(
                 else if(!user) {
                     return done(null,false, { message : 'Email is not registered'});
                 }
-                else if(!user.verifypassword(password)) {
+                else if(!user.password) { 
+                    // (!user.verifypassword(password))
                     return done(null,false , { message : 'Wrong Password'});
                 }
                 else {

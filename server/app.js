@@ -17,6 +17,7 @@ app.use(cors());
 app.use(passport.initialize());
 app.use('/api',rtsIndex);
 
+
 app.use((err,req,res,next) => {
     if(err.name === 'ValidationError') {
         var valErrors = [];
@@ -24,5 +25,4 @@ app.use((err,req,res,next) => {
         res.status(422).send(valErrors);
     }
 })
-
 app.listen(process.env.PORT, () => console.log(`server started at port : ${process.env.PORT}`));

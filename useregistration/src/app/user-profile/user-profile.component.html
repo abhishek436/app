@@ -1,26 +1,106 @@
-<table *ngIf="userDetails" class="table-fill">
-    <thead>
-        <tr>
-            <th colspan="2" class="text-center">User Profile</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>First Name</td>
-            <td>{{userDetails.Name.split(' ')[0]}}</td>
-        </tr>
-        <tr>
-            <td>Last Name</td>
-            <td>{{userDetails.Name.split(' ')[1]}}</td>
-        </tr>
-        <tr>
-            <td>Email</td>
-            <td>{{userDetails.email}}</td>
-        </tr>
-        <tr>
-            <td colspan="2" class="text-center">
-                <input type="button" (click)="onLogout()" value="Logout" />
-            </td>
-        </tr>
-    </tbody>
-  </table>
+<div class="container emp-profile">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- <div class="profile-img">
+                    <img src="assets/hii.png" alt=""/>
+                </div> -->
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                            <h1>
+                            
+                            </h1><hr/>
+                            <h4>
+                                FabFit User
+                            </h4>
+                            
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Edit Profile</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+           
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-work">
+                    <p>QUICK LINKS</p>
+                    <hr>
+                    <a [routerLink] = "['/main']">Home</a><br/><br>
+                  
+                </div>
+            </div>
+            
+            <div class="col-md-8">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <form [formGroup] = "updateForm" (ngSubmit) = "updatedetails(updateForm)">
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Name:</label>
+                                <div class="col-lg-8">
+                              
+                                  <input class="form-control" type="text" formControlName = "Name">
+        
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-lg-3 control-label">Email:</label>
+                                  <div class="col-lg-8">
+                                    <input class="form-control" disabled = "true"  type="text" formControlName = "email">
+                                   <br>
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                        <label class="col-lg-3 control-label">Date of Birth:</label>
+                                        <div class="col-lg-8">
+                                          <input class="form-control"  type="text" formControlName = "dob">
+                                         <br>
+                                        </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                      <label class="col-lg-3 control-label">Contact:</label>
+                                      <div class="col-lg-8">
+                                    <input class="form-control"   type="text" formControlName = "phone">
+                                         <br>
+                                            </div>
+                                </div>
+ 
+                                
+                                     <div class="form-group">
+                                        <label class="col-md-3 control-label">Password:</label>
+                                        <div class="col-md-8">
+                                        <input class="form-control" #x type="password" formControlName = "password">
+                                        <br><input type="checkbox" (click)="x.type=x.type=='password'?'text':'password'">Show Password 
+                                    
+                                                
+                                        </div>
+                                     </div>
+
+                                          <div class="form-group">
+                                            <label class="col-md-3 control-label"></label>
+                                            <div class="col-md-8">
+                                            <button type="submit" class="btn btn-primary">Save Changes</button>&nbsp;&nbsp;                                            
+                                              </div>
+                                            </div>
+                               
+                          
+                              </form>
+
+                              
+                    </div>
+                </div>
+               
+         
+        </div>
+       
+         
+    </div>
+    </form>           
+</div>

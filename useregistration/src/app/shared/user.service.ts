@@ -7,8 +7,10 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class UserService {
+  navlogin : boolean = true
 
   selectedUser : User = {
+    _id : '',
     Name : '',
     email : '',
     password : ''
@@ -16,7 +18,11 @@ export class UserService {
   
   noAuthHeader = { headers: new HttpHeaders({ 'NoAuth': 'True' }) };
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient) {
+    if(localStorage.getItem('loginid') != null) {
+      this.navlogin = false;
+    }
+  }
 
   postUser(user : User) {
     return this.http.post(environment.apiBaseUrl+'/register',user,this.noAuthHeader);
@@ -28,6 +34,10 @@ export class UserService {
 
   getuserprofile() {
     return this.http.get(environment.apiBaseUrl+'/userProfile');
+  }
+
+  updateprofile(_id,user : User) {
+    return this.http.put(environment.apiBaseUrl + '/profileupdate' + `/${_id}`,user,this.noAuthHeader);
   }
 
   setToken(token : string) {
